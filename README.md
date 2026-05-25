@@ -1,1 +1,1 @@
-(visit site)[https://blog-gn.netlify.app/]
+[visit site](https://blog-gn.netlify.app/)
