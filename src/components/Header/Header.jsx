@@ -2,8 +2,9 @@ import { Link, NavLink } from "react-router";
 import { HomeP } from "../../pages/indexP";
 import { useState } from "react";
 import logo from "../../assets/hero.png";
+import LogoutBtn from "./LogoutBtn";
 export default function Header() {
-  const loginStatus = false;
+  const loginStatus = true;
   const navItems = [
     { title: "Home", show: true, path: "home" },
     {
@@ -25,11 +26,6 @@ export default function Header() {
       title: "Add Post",
       show: loginStatus,
       path: "add-post",
-    },
-    {
-      title: "Logout",
-      show: loginStatus,
-      path: "logout",
     },
   ];
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -62,9 +58,13 @@ export default function Header() {
                 >
                   {item.title}
                 </NavLink>
+               
               </div>
             ) : null,
           )}
+          {loginStatus && <div className="hidden bg-purple-600 font-medium rounded transform px-2 py-1 md:flex items-center justify-center">
+          <LogoutBtn/>
+          </div>}
         </div>
 
         {/* mobile */}
