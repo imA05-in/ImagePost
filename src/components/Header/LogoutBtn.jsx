@@ -1,3 +1,18 @@
+import { useDispatch } from "react-redux"
+import authService from "../../appwrite/Auth"
+import { toggleLogoutRedux } from "../../store/AuthSlice"
+
 export default function LogoutBtn(){
-    return "logout"
+
+    const dispatch = useDispatch()
+    function handleLogout(){
+        authService.deleteSessions()
+        dispatch(toggleLogoutRedux())
+    }
+
+    return (
+        <div>
+            <button onClick={handleLogout}>Logout</button>
+        </div>
+    )
 }
