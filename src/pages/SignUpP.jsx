@@ -1,8 +1,13 @@
+import { Signup,Container } from "../components"
+
 export default function SingUpP()
 {
+    
     return (
-        <div>
-            SingUp
+        <div className="flex justify-center items-center">
+            <Container>
+                <Signup/>
+            </Container>
         </div>
     )
 }
