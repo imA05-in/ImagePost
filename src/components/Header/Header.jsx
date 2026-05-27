@@ -3,8 +3,9 @@ import { HomeP } from "../../pages/indexP";
 import { useState } from "react";
 import logo from "../../assets/hero.png";
 import LogoutBtn from "./LogoutBtn";
+import { useSelector } from "react-redux";
 export default function Header() {
-  const loginStatus = true;
+  const loginStatus = useSelector((state)=>state.auth.status)
   const navItems = [
     { title: "Home", show: true, path: "home" },
     {
@@ -82,14 +83,17 @@ export default function Header() {
           {navItems.map((item) => {
             if (item.show) {
               return (
-                  <div className="bg-purple-600 font-medium rounded py-1 px-2" >
-                <NavLink to={item.path}>
+                  <div className="bg-purple-600 font-medium rounded py-1 px-2" key={item.title} >
+                <NavLink to={item.path}  onClick={() => setMobileMenu(false)} >
                     {item.title}
                 </NavLink>
                     </div>
               );
             }
           })}
+          {loginStatus && <div  onClick={() => setMobileMenu(false)} className=" bg-purple-600 font-medium rounded transform px-2 py-1 md:flex items-center justify-center" >
+          <LogoutBtn/>
+          </div>}
         </div>
       )}
     </div>
