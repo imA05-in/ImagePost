@@ -1,8 +1,12 @@
+import {Login, Container} from "../components/index"
+
 export default function LoginP()
 {
     return (
-        <div>
-            login
+        <div className="flex justify-center items-center">
+        <Container>
+            <Login/>
+        </Container>
         </div>
     )
 }
