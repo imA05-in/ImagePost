@@ -1,4 +1,4 @@
-import {Input} from "./index"
+import {Input, Button} from "./index"
 import {useForm} from "react-hook-form"
 import { useNavigate } from "react-router"
 import { useDispatch } from "react-redux"
@@ -31,7 +31,7 @@ export default function Login(){
             <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-10 border rounded justify-center items-center w-full p-2 m-4 py-6" >
             <Input label={`username`} type="text" {...register("email",{required:true})}/>
             <Input label={`password`} type="password"{...register("password",{required:true})}/>
-            <button type="submit" className="bg-blue-500 font-medium rounded w-full">submit</button>
+            <Button/>
             </form>
         </div>
     )

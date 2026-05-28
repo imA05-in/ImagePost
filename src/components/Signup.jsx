@@ -1,5 +1,5 @@
 import { ID } from "appwrite";
-import { Input } from "./index";
+import { Button, Input } from "./index";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import authService from "../appwrite/Auth";
@@ -37,25 +37,19 @@ export default function Signup() {
       >
         <Input
           label={`name`}
-          // id={ID.unique()}
           {...register("name", { required: true, pattern: /^[A-Za-z]+$/i })}
         />
 
         <Input
           label={`username`}
-          // id={ID.unique()}
           {...register("email", { required: true })}
         />
 
         <Input
           label={`password`}
-          // id={ID.unique()}
           {...register("password", { required: true, minLength: 8 })}
         />
-
-        <button type="submit" className="bg-blue-500 font-medium rounded">
-          submit
-        </button>
+        <Button/>
       </form>
     </div>
   );
