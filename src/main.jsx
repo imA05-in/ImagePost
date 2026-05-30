@@ -1,51 +1,74 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import {createBrowserRouter, RouterProvider} from "react-router"
-import {HomeP,SingUpP,LoginP, AddPostP,AllPosts} from "./pages/indexP.js"
-import AuthLayout from "./components/AuthLayout.jsx"
-import { Provider } from 'react-redux'
-import { store } from './store/store.js'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import {
+  HomeP,
+  SingUpP,
+  LoginP,
+  AddPostP,
+  AllPosts,
+  Post,
+} from "./pages/indexP.js";
+import AuthLayout from "./components/AuthLayout.jsx";
+import { Provider } from "react-redux";
+import { store } from "./store/store.js";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
-    children:[
+    element: <App />,
+    children: [
       {
         path: "home",
-        element:(
+        element: (
           <AuthLayout>
-            <HomeP/>
+            <HomeP />
           </AuthLayout>
-        )
+        ),
       },
       {
-        path:"signup",
-        element: <SingUpP/>
+        path: "signup",
+        element: <SingUpP />,
       },
       {
-        path:"login",
-        element:<LoginP/>
+        path: "login",
+        element: <LoginP />,
       },
       {
-        path:"all-posts",
-        element:<AllPosts/>
+        path: "all-posts",
+        element: (
+          <AuthLayout>
+            <AllPosts />
+          </AuthLayout>
+        ),
       },
       {
-        path:"add-post",
-        element:<AddPostP/>
+        path: "add-post",
+        element: (
+          <AuthLayout>
+            <AddPostP />
+          </AuthLayout>
+        ),
       },
-    ]
-  }
-])
+      {
+        path: "/post/:slug",
+        element: (
+          <AuthLayout>
+            <Post />
+          </AuthLayout>
+        ),
+      },
+    ],
+  },
+]);
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-    <RouterProvider router={router}/>
-    {/* <App /> */}
+      <RouterProvider router={router} />
+      {/* <App /> */}
     </Provider>
   </StrictMode>,
-)
+);
