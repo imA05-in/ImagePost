@@ -3,4 +3,5 @@ import LoginP from "./LoginP";
 import SingUpP from "./SignUpP";
 import AddPostP from "./AddPostP";
 import AllPosts from "./AllPost";
-export {HomeP,LoginP, SingUpP, AddPostP, AllPosts}
+import Post from "./Post"
+export {HomeP,LoginP, SingUpP, AddPostP, AllPosts,Post}
