@@ -1,5 +1,5 @@
 import conf from "../conf";
-import { Client, Condition, ID, TablesDB, Storage } from "appwrite";
+import { Client, Condition, ID, TablesDB, Storage, Query } from "appwrite";
 //$id ,userId, userName, ImageId, title, content, status
 class Config {
   client = new Client();
@@ -50,6 +50,7 @@ class Config {
       return await this.tablesDB.listRows({
         databaseId: conf.DATABASE_ID,
         tableId: conf.TABLE_ID,
+        queries:[Query.orderDesc("$createdAt")]
       });
     } catch (error) {
       console.log("listRows: ", error);
