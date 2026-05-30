@@ -35,7 +35,7 @@ export default function Header() {
     <div>
       <nav className="flex justify-between px-3 py-1 border-b h-15 items-center backdrop-blur-md ">
           <div>
-        <NavLink to={`/`}>
+        <NavLink to={`/home`}>
             <img
               src={logo}
               alt="logo"
