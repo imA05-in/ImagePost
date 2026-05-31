@@ -31,7 +31,7 @@ export default function Login(){
     }
     
     return(
-        <div >
+        <div className="flex justify-center items-center">
             {err && <p className="text-red-500" >{err}</p> }
             <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-10 border rounded justify-center items-center w-full p-2 m-4 py-6" >
                 {errors.email && <p className="text-red-500 ">{errors.email.message}</p> }
