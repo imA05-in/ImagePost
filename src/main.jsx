@@ -10,6 +10,7 @@ import {
   AddPostP,
   AllPosts,
   Post,
+  EditPost
 } from "./pages/indexP.js";
 import AuthLayout from "./components/AuthLayout.jsx";
 import { Provider } from "react-redux";
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
           </AuthLayout>
         ),
       },
+      {
+        path:"edit-post/:slug",
+        element:<EditPost/>
+      }
     ],
   },
 ]);
