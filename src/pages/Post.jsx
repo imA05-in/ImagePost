@@ -28,6 +28,10 @@ export default function Post() {
     appwriteService.deleteRow(post.$id).then(()=>navigate("/all-posts"))
   }
 
+  async function update() {
+    navigate(`/edit-post/${post.$id}`)
+  }
+
   return (
     <div className="p-2 rounded">
       <img src={file} alt={post.title} className="rounded" />
@@ -37,7 +41,7 @@ export default function Post() {
           <p className="text-gray-100">{`@${post.userName}`}</p>
         </div>
         {isAuthor && <div className="flex gap-2">
-            <Button label="edit"/>
+            <Button label="edit" onclick={update}/>
             <Button label="delete" clssName={`bg-red-500`} type="" onclick={delte}/>
             </div>}
       </div>
