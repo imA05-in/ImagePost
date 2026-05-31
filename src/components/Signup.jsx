@@ -38,7 +38,7 @@ export default function Signup() {
   }
 
   return (
-    <div className="border rounded p-2 m-2 w-full">
+    <div className="border rounded p-2 m-2 w-full flex justify-center items-center">
       {err && <p className="text-red-500" >{err}</p>}
       <form
         onSubmit={handleSubmit(submit)}
