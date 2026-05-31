@@ -9,13 +9,13 @@ export default function PostForm({ post }) {
   const userData = useSelector((state) => state.auth.userData);
   const { register, handleSubmit } = useForm({
     defaultValues: {
-      title: post?.title,
-      image: post?.image,
+      title: post?.title || "",
+      // image: post?.image,
     },
   });
   const navigate = useNavigate();
   async function submit(data) {
-    if ({ post }) {
+    if (post) {
       try {
         console.log("data", data);
         console.log("post", { ...post });
