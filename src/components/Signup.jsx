@@ -38,7 +38,7 @@ export default function Signup() {
   }
 
   async function googleSubmit() {
-    return await authService.createOAuth2Session()
+    await authService.createOAuth2Session()
   }
 
   return (
@@ -74,7 +74,7 @@ export default function Signup() {
         <Button />
       </form>
       <div>
-        <Button onclick={googleSubmit} label="Continue with Google" clssName={`px-3 bg-red-500 mb-3`} />
+        {/* <Button onclick={googleSubmit} label="Continue with Google" clssName={`px-3 bg-red-500 mb-3`} /> */}
       </div>
     </div>
   );
