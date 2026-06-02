@@ -1,6 +1,6 @@
 import { ID } from "appwrite";
 import { Button, Input } from "./index";
-import { set, useForm } from "react-hook-form";
+import { appendErrors, set, useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import authService from "../appwrite/Auth";
 import { useDispatch } from "react-redux";
@@ -37,8 +37,12 @@ export default function Signup() {
     }
   }
 
+  async function googleSubmit() {
+    return await authService.createOAuth2Session()
+  }
+
   return (
-    <div className="border rounded p-2 m-2 w-full flex justify-center items-center">
+    <div className="border rounded p-2 m-2 w-full flex flex-col gap-6 justify-center items-center">
       {err && <p className="text-red-500" >{err}</p>}
       <form
         onSubmit={handleSubmit(submit)}
@@ -69,6 +73,10 @@ export default function Signup() {
           />
         <Button />
       </form>
+      <div>
+        <Button onclick={googleSubmit} label="Continue with Google" clssName={`px-3 bg-red-500 mb-3`} />
+      </div>
     </div>
   );
 }
+  

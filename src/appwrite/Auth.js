@@ -1,4 +1,4 @@
-import { Client, Account, ID } from "appwrite";
+import { Client, Account, ID, OAuthProvider } from "appwrite";
 import conf from "../conf.js";
 
 class auth {
@@ -40,6 +40,19 @@ class auth {
       return await this.account.deleteSessions();
     } catch (error) {
       console.log("deletesessions: ", error);
+    }
+  }
+
+  async createOAuth2Session(){
+    try {
+      return await this.account.createOAuth2Session({
+        provider:OAuthProvider.Google,
+        success:"https://blog-beta-azure.vercel.app",
+        failure:"https://blog-beta-azure.vercel.app/signup"
+      })
+    } catch (error) {
+      console.log("createOAuth2Session: ",error);
+      
     }
   }
   
