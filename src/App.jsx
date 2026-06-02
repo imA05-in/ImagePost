@@ -9,12 +9,21 @@ import { toggleLoginRedux } from "./store/AuthSlice"
 function App() {
 
   const dispatch = useDispatch()
-  useEffect(()=>{
-    const userData = authService.getAccount()
-    if (userData){
-      dispatch(toggleLoginRedux(userData))
+  useEffect(() => {
+  const checkAuth = async () => {
+    try {
+      const userData = await authService.getAccount();
+
+      if (userData) {
+        dispatch(toggleLoginRedux(userData));
+      }
+    } catch (error) {
+      console.log(error);
     }
-  },[])
+  };
+
+  checkAuth();
+}, [dispatch]);
 
   return (
     <div className="min-h-screen flex flex-col">
