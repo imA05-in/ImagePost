@@ -13,7 +13,6 @@ dist-ssr
 *.local
 .env
 client_secret_638497709631-pfsk6ai335h4k8uajrjun2b61nkgtrpu.apps.googleusercontent.com.json
-screenshots
 
 # Editor directories and files
 .vscode/*
