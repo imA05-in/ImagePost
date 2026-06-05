@@ -6,36 +6,44 @@ import { useEffect, useState } from "react";
 import { toggleLoginRedux } from "../store/AuthSlice";
 export default function HomeP() {
   const [posts, setPosts] = useState([]);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  useEffect(()=>{
-    appwriteService
-    .listRows()
-    .then((post) => setPosts(post.rows))
-    .catch((error) => console.log("Homep: ", error));
-  },[])
-
-  useEffect(()=>{
-    async function  authStat() {
-    const userData = await authService.getAccount()
-    if(userData){
-      dispatch(toggleLoginRedux(userData))
-      // console.log(userData);
+  useEffect(() => {
+    try {
       
-    }      
-    };
-    authStat()
-  },[])
-
-  return <div className="flex flex-col md:flex-row md:justify-center items-center gap-4 py-2 flex-wrap">
-    {
-        posts.map((post)=>(
-            <div key={post.title}>
-                <PostCard post={post}/>
-            </div>
-        ))
+      appwriteService
+      .listRows()
+      .then((post) => setPosts(post.rows))
+      .catch((error) => console.log("Homep: ", error));
+    } catch (error) {
+      console.log("Home :: listRows: ",error);
+      
     }
-    <div>
+  }, []);
+
+  useEffect(() => {
+    try {
+      async function authStat() {
+        const userData = await authService.getAccount();
+        if (userData) {
+          dispatch(toggleLoginRedux(userData));
+          // console.log(userData);
+        }
+      }
+      authStat();
+    } catch (error) {
+      console.log("authStat: ", error);
+    }
+  }, []);
+
+  return (
+    <div className="flex flex-col md:flex-row md:justify-center items-center gap-4 py-2 flex-wrap">
+      {posts.map((post) => (
+        <div key={post.title}>
+          <PostCard post={post} />
+        </div>
+      ))}
+      <div></div>
     </div>
-  </div>;
+  );
 }
