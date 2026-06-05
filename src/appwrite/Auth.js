@@ -47,7 +47,7 @@ class auth {
     try {
       return await this.account.createOAuth2Session({
         provider:OAuthProvider.Google,
-        success:"https://blog-three-xi-56.vercel.app/home",
+        success:"https://blog-three-xi-56.vercel.app",
         failure:"https://blog-three-xi-56.vercel.app/signup"
         // success:"http://localhost:5173/home",
         // failure:"http://localhost:5173/signup"
