@@ -8,6 +8,7 @@ export default function LogoutBtn(){
     function handleLogout(){
         authService.deleteSessions()
         dispatch(toggleLogoutRedux())
+        alert("Logout")
     }
 
     return (

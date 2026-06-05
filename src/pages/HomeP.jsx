@@ -1,15 +1,30 @@
+import { useDispatch } from "react-redux";
+import authService from "../appwrite/Auth";
 import appwriteService from "../appwrite/Config";
-import { PostCard } from "../components";
+import { Button, PostCard } from "../components";
 import { useEffect, useState } from "react";
+import { toggleLoginRedux } from "../store/AuthSlice";
 export default function HomeP() {
   const [posts, setPosts] = useState([]);
+  const dispatch = useDispatch()
 
   useEffect(()=>{
-
     appwriteService
     .listRows()
     .then((post) => setPosts(post.rows))
     .catch((error) => console.log("Homep: ", error));
+  },[])
+
+  useEffect(()=>{
+    async function  authStat() {
+    const userData = await authService.getAccount()
+    if(userData){
+      dispatch(toggleLoginRedux(userData))
+      // console.log(userData);
+      
+    }      
+    };
+    authStat()
   },[])
 
   return <div className="flex flex-col md:flex-row md:justify-center items-center gap-4 py-2 flex-wrap">
@@ -20,5 +35,7 @@ export default function HomeP() {
             </div>
         ))
     }
+    <div>
+    </div>
   </div>;
 }
