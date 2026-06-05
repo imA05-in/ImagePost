@@ -7,6 +7,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleLoginRedux, toggleLogoutRedux } from "./store/AuthSlice";
 
 function App() {
+  const dispatch = useDispatch()
+
+   useEffect(() => {
+    async function initializeHome() {
+      try {
+        const userData = await authService.getAccount()
+        if(userData){
+          dispatch(toggleLoginRedux(userData))
+          console.log(userData);
+          
+        }
+
+      } catch (error) {
+        console.error("Error initializing Home page:", error);
+      } 
+    }
+
+    initializeHome();
+  }, [dispatch]);
 
   return (
     <div className="min-h-screen flex flex-col">
