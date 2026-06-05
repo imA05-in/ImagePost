@@ -12,6 +12,9 @@ export default function Login(){
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [err, setErr] = useState("")
+    async function googleSubmit() {
+    await authService.createOAuth2Session()
+  }
     async function submit(data){
         try {
             setErr("")
@@ -31,7 +34,7 @@ export default function Login(){
     }
     
     return(
-        <div className="flex justify-center items-center">
+        <div className="border rounded p-2 m-2 w-full flex flex-col gap-6 justify-center items-center">
             {err && <p className="text-red-500" >{err}</p> }
             <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-10 border rounded justify-center items-center w-full p-2 m-4 py-6" >
                 {errors.email && <p className="text-red-500 ">{errors.email.message}</p> }
@@ -46,6 +49,9 @@ export default function Login(){
             }})}/>
             <Button/>
             </form>
+            <div>
+        <Button onclick={googleSubmit} label="Continue with Google" clssName={`px-3 bg-red-500 mb-3`} />
+      </div>
         </div>
     )
 }
