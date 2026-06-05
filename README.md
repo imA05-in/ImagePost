@@ -20,3 +20,5 @@ NOTE: use chrome for best experience, (or turn down the security on other borwse
 - **Backend**: Appwrite
 - **Build**: Vite
 - **Form Management**: React Hook Form
+
+<img src="screenshots/Screenshot From 2026-06-05 11-56-53.png">
