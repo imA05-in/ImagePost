@@ -13,7 +13,7 @@ export default function PostCard({ post }) {
   return (
     <Link to={`/post/${post.$id}`}>
       <div className="w-50 flex flex-col justify-center  gap-1 p-2 h-80 bg-purple-900/15 rounded-2xl border">
-        <img src={file} alt=""  className="rounded"/>
+        <img src={file} alt=""  className="rounded max-h-50 "/>
         <h2 className="font-bold text-2xl">{post.title}</h2>
         <p className="text-gray-100">{`@${post.userName}`}</p>
       </div>
