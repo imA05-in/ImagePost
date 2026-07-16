@@ -1,0 +1,1 @@
+I created this project to put my skill to a test, this project tested em well and taught a few other key lessons like "how staying calm results into better reasoning" and "how end product is affected (in a good way!) if you focus on building process instead constantly worrying about the outcome". This project includes 
